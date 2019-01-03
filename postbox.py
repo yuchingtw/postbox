@@ -6,6 +6,7 @@ __version__ = '0.1'
 from getpass import getpass
 from smtplib import SMTP
 
+
 class Postbox(object):
 
     host = None
@@ -40,7 +41,7 @@ class Postbox(object):
             self.server.starttls()
 
         if not self.user and self.prompt_user:
-            self.user = raw_input(self.prompt_user)
+            self.user = input(self.prompt_user)
 
         if self.user and not self.password and self.prompt_password:
             self.password = getpass(self.prompt_password)
@@ -81,6 +82,7 @@ class Postbox(object):
 
     def __exit__(self, exc_type, exc_value, exc_tb):
         self.close()
+
 
 class Gmail(Postbox):
     host = 'smtp.gmail.com'
